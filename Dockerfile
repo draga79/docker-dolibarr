@@ -3,7 +3,7 @@ MAINTAINER Stefano Marinelli <stefano@dragas.it>
 
 ENV VERSION 7.0.0
 ENV PHP_TIMEZONE UTC
-ENV PHP_MEMORY_LIMIT 512M
+ENV PHP_MEMORY_LIMIT 256M
 ENV MAX_UPLOAD 128M
 
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev libpq-dev cron wget curl \
