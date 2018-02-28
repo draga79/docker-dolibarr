@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:7-apache
 MAINTAINER Stefano Marinelli <stefano@dragas.it>
 
 ENV VERSION 6.0.5
@@ -6,7 +6,7 @@ ENV PHP_TIMEZONE UTC
 ENV PHP_MEMORY_LIMIT 256M
 ENV MAX_UPLOAD 128M
 
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libldap2-dev libpq-dev cron wget curl \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev libpq-dev cron wget curl \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd \
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libldap2-dev l
         && docker-php-ext-install ldap \
         && docker-php-ext-install mysqli \
         && docker-php-ext-install pgsql \
-        && apt-get purge -y libpng12-dev libjpeg-dev libldap2-dev
+        && apt-get purge -y libpng-dev libjpeg-dev libldap2-dev
 
 COPY php.ini /usr/local/etc/php/
 COPY ./docker-entrypoint.sh /
