@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7.2-apache
 MAINTAINER Stefano Marinelli <stefano@dragas.it>
 
 ENV VERSION 7.0.1
@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev lib
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
         && docker-php-ext-install ldap \
         && docker-php-ext-install mysqli \
-        && docker-php-ext-install pgsql \
         && apt-get purge -y libpng-dev libjpeg-dev libldap2-dev
 
 COPY php.ini /usr/local/etc/php/
